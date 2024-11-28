@@ -6,5 +6,6 @@ namespace ewallet.Services.Interfaces
     {
         //register user
         RegisterUserResponse RegisterUser(RegisterUserRequest request);
+        string? GenerateJwtToken(LoginRequest request);
     }
 }

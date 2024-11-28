@@ -21,5 +21,16 @@ namespace ewallet.Controllers
             var result = _userService.RegisterUser(request);
             return Ok(result);
         }
+
+        [HttpPost("token")]
+        public IActionResult GetToken([FromBody] LoginRequest request)
+        {
+            var token = _userService.GenerateJwtToken(request);
+            if (token == null) 
+            {
+                return Unauthorized("Invalid credentials");
+            }
+            return Ok(new { token });
+        }
     }
 }
